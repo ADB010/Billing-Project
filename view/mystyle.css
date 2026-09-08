@@ -1,0 +1,13 @@
+.form {
+    align-self: center;
+    align-items: center;
+    padding: 4cm;
+    padding-left: 8cm;
+}
+label {
+    font-size: small;
+}
+.submit {
+    align-self: auto;
+    
+}
