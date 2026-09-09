@@ -77,11 +77,13 @@
             $conn = $this->dbConnect();
             $sql = "INSERT INTO customers (customer_name, pass, email) VALUES (?, ?, ?)";
 
-            if($conn->query($sql) === TRUE){
-                echo "Insert Successful<br>";
+            if($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("sss", $name, $pass, $email);
+                $stmt->execute();
+                echo "New records created successfully";
             }
             else{
-                echo "Error During Insert " . mysqli_error($conn);
+                echo "Error: " . $sql . "<br>" . $conn->error;
             }
             $conn->close();
         }

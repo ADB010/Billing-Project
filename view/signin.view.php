@@ -12,8 +12,7 @@
                 <input type="password" id="password" name="password"><br>
                 <input type="submit" class="submit" value="submit"><br>
                 <label for="txt">Don't have an account?</label>
-                <a href="http://localhost/PHP%20Project/view/login.view.php">Login</a>
-
+                <a href="http://localhost:8080/Billing%20Project/view/login.view.php">Login</a>
             </form>
         </div>
     </div>

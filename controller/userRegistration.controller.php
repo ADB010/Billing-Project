@@ -1,5 +1,5 @@
 <?php
-    require_once "../model/database.con.php";
+    require_once "../model/customer.database.con.php";
 
     $username = $_POST['fname'];
     $pass = $_POST['password'];
@@ -10,6 +10,7 @@
     $newCon->dbCreate();
     $newCon->createTable();
     $newCon->insertData($username, $pass, $email);
-    
+
+    header("Locarion: ../view/productInfo.php");
     
 
