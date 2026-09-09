@@ -37,6 +37,7 @@
                 echo "Error Creating Database: " . $conn->error;
             }
             $conn->close();
+            return;
         }
 
         function dbConnect(){
@@ -71,6 +72,7 @@
                 echo "Error Creating Table: " . mysqli_error($conn);
             }
             $conn->close();
+            return;
         }
 
         function insertData($name, $pass, $email){
@@ -80,14 +82,28 @@
             if($stmt = $conn->prepare($sql)) {
                 $stmt->bind_param("sss", $name, $pass, $email);
                 $stmt->execute();
-                echo "New records created successfully";
+                echo "New records created successfully<br>";
             }
             else{
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
             $conn->close();
+            return;
+        }
+        function getCustomerData($name){
+            $conn = $this->dbConnect();
+            $sql = "SELECT customer_id, customer_name, email, reg_date FROM customers WHERE customer_name = '$name'";
+            $result = $conn->query($sql);
+            if($result->num_rows > 0){
+                return $result;
+            }
+            else{
+                echo "No Data found";
+                
+            } 
+            $conn->close();
         }
     }   
 
-    
+   
     
