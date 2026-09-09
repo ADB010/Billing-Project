@@ -1,5 +1,6 @@
 <?php include_once 'header.view.php';?>
 <body>
+    <div class="container">
         <div class="form">
             <form name="user login" action="../controller/userRegistration.controller.php" method="post">
                 <label for="fname">First name:</label><br>
@@ -9,5 +10,6 @@
                 <input type="submit" class="submit" value="submit">
             </form>
         </div>
+    </div>
 </body>
 </html>
