@@ -75,7 +75,7 @@
 
         function insertData($name, $pass, $email){
             $conn = $this->dbConnect();
-            $sql = "INSERT INTO customers (customer_name, pass, email) VALUES ('$name', '$pass', '$email')";
+            $sql = "INSERT INTO customers (customer_name, pass, email) VALUES (?, ?, ?)";
 
             if($conn->query($sql) === TRUE){
                 echo "Insert Successful<br>";
@@ -85,7 +85,7 @@
             }
             $conn->close();
         }
-    }    
+    }   
 
     
     

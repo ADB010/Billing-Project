@@ -2,7 +2,7 @@
 <body>
     <div class="container">
         <div class="form">
-            <h1 class="heading">Signup</h1>
+            <h1 class="heading">login</h1>
             <form name="user login" action="../controller/userRegistration.controller.php" method="post">
                 <label for="fname">Name:</label><br>
                 <input type="text" id="fname" name="fname"><br>
@@ -10,7 +10,10 @@
                 <input type="email" id="email" name="email"><br>
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password"><br>
-                <input type="submit" class="submit" value="submit">
+                <input type="submit" class="submit" value="submit"><br>
+                <label for="txt">Already have an account?</label>
+                <a href="http://localhost/PHP%20Project/view/signin.view.php">Login</a>
+
             </form>
         </div>
     </div>
