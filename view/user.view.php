@@ -1,4 +1,4 @@
-<?php include_once 'header.view.php';?>
+<?php include_once 'partials/header.view.php';?>
 <body>
     <div class="container">
         <div class="form">

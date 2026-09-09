@@ -1,11 +1,6 @@
 <?php
 
-// class userReg {
-//     public $user;
-//     public $pass;
+    $username = $_POST['fname'];
+    $pass = $_POST['password'];
 
-//     public function __construct() {
-//         $this->user = $_POST["fname"];
-//         $this->pass = $_POST["password"];
-//     }
-// }
+    dbCreate($username, $pass, "user");
