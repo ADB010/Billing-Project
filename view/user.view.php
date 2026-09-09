@@ -3,8 +3,10 @@
     <div class="container">
         <div class="form">
             <form name="user login" action="../controller/userRegistration.controller.php" method="post">
-                <label for="fname">First name:</label><br>
+                <label for="fname">Name:</label><br>
                 <input type="text" id="fname" name="fname"><br>
+                <lable for="email">Email:</lable><br>
+                <input type="email" id="email" name="email"><br>
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password"><br>
                 <input type="submit" class="submit" value="submit">

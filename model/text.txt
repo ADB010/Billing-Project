@@ -1,0 +1,57 @@
+    function dbCreate($name, $pass, $database){
+        $servername = "localhoast";
+        $username = $name;
+        $password = $pass;
+        $dbname = $database;
+
+        $conn = mysqli_connect($servername, $username, $password);
+
+        if(!$conn){
+            die("Connection Failed: " . mysqli_connect_error());
+        }
+        else{
+            echo "Connection Succesfull";
+        }
+        $sql = "CREATE DATABASE $dbname";
+        if(mysqli_query($conn,$sql))    {
+            echo "Database Created";
+        }
+        else{
+            echo "Error Creating Database: " . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+    }
+
+    function dbConnect($name, $pass, $database){
+        
+        $conn = mysqli_connect("localhost", $name, $pass, $database);
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        return $conn;
+    }
+
+    function createTable($name, $pass, $database){
+        $conn = dbConnect($name, $pass, $database);
+
+        $sql = "CREATE TABLE users(
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userName VARCHAR(30) NOT NULL,
+        pass VARCHAR(30) NOT NULL,
+        email VARCHAR(50) NOT NULL,
+        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )";
+
+        if(mysqli_query($conn,$sql)){
+            echo "Table Created";
+        }
+        else{
+            echo "Error Creating Table: " . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+    }
+
+    function insertData($name, $pass, $database){
+        $conn = dbConnect($name, $pass, $database);
+        // $sql = "INSERT INTO users (userName, pass, email) VALUES 
+    }
