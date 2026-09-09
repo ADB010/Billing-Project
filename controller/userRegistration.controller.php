@@ -9,13 +9,14 @@
     $newCon = new DbConnection("admin", "gg", $db);
     $newCon->dbCreate();
     $newCon->createTable();
+    $newCon->deleteCustomerData($username);
     // $newCon->insertData($username, $pass, $email);
     $results = $newCon->getCustomerData($username);
 
     foreach($results as $row){
         echo $row['customer_name'] . "<br>";
     }
-    die();
+    
 
     // header("Location: ../view/productInfo.view.php");
     

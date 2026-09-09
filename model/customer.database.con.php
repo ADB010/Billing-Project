@@ -2,9 +2,9 @@
     require_once '../controller/userRegistration.controller.php';
     class DbConnection{
         protected $servername = "localhost";
-        protected $username;
-        protected $password;
-        protected $dbname;
+        protected $username = "";
+        protected $password = "";
+        protected $dbname = "";
 
         function __construct($username, $password, $dbname){
             $this->username = $username; 
@@ -102,6 +102,19 @@
                 
             } 
             $conn->close();
+            return;
+        }
+        function deleteCustomerData($name){
+            $conn = $this->dbConnect();
+            $sql = "DELETE FROM customers WHERE customer_name = '$name'";
+            if($conn->query($sql) === TRUE){
+                echo "Record deleted successfully<br>";
+            }
+            else{
+                echo "Error deleting record: " . $conn->error;
+            }
+            $conn->close();
+            return;
         }
     }   
 
