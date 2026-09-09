@@ -3,8 +3,10 @@
 
     $username = $_POST['fname'];
     $pass = $_POST['password'];
-    $db = "userInfo";   
+    $db = "customerInfo";   
 
-    $newCon = new DbConnection($username, $pass, $db);
-    
+    $newCon = new DbConnection("admin", "gg", $db);
+    $newCon->dbCreate();
+    $newCon->createTable();
+
 

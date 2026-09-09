@@ -1,7 +1,7 @@
 <?php
     require_once '../controller/userRegistration.controller.php';
     class DbConnection{
-        protected $servername = "localhoast";
+        protected $servername = "localhost";
         protected $username;
         protected $password;
         protected $dbname;
@@ -12,6 +12,9 @@
             $this->dbname = $dbname;
         }
 
+        // function createUser(){
+
+        // }
 
         public function dbCreate(){
 
@@ -26,7 +29,7 @@
             else{
                 echo "Connection Succesfull";
             }
-            $sql = "CREATE DATABASE $this->dbname";
+            $sql = "CREATE DATABASE IF NOT EXISTS $this->dbname";
             if(mysqli_query($conn,$sql))    {
                 echo "Database Created";
             }
@@ -53,9 +56,9 @@
         function createTable(){
             $conn = $this->dbConnect();
 
-            $sql = "CREATE TABLE users(
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            userName VARCHAR(30) NOT NULL,
+            $sql = "CREATE TABLE IF NOT EXISTS customers(
+            customer_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            customer_name VARCHAR(30) NOT NULL,
             pass VARCHAR(30) NOT NULL,
             email VARCHAR(50) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -73,6 +76,7 @@
         function insertData(){
             $conn = $this->dbConnect();
             // $sql = "INSERT INTO users (userName, pass, email) VALUES 
+
         }
     }    
 
