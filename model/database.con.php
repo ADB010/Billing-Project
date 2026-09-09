@@ -18,37 +18,37 @@
 
         public function dbCreate(){
 
-            $conn = mysqli_connect(
+            $conn = new mysqli(
                 $this->servername, 
                 $this->username, 
                 $this->password);
 
-            if(!$conn){
-                die("Connection Failed: " . mysqli_connect_error());
+            if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
             }
             else{
-                echo "Connection Succesfull";
+                echo "Connection Succesfull<br>";
             }
             $sql = "CREATE DATABASE IF NOT EXISTS $this->dbname";
-            if(mysqli_query($conn,$sql))    {
-                echo "Database Created";
+            if($conn->query($sql) === TRUE)    {
+                echo "Database Created<br>";
             }
             else{
-                echo "Error Creating Database: " . mysqli_error($conn);
+                echo "Error Creating Database: " . $conn->error;
             }
-            mysqli_close($conn);
+            $conn->close();
         }
 
         function dbConnect(){
             
-            $conn = mysqli_connect(
+            $conn = new mysqli(
                 $this->servername, 
                 $this->username, 
                 $this->password, 
                 $this->dbname);
 
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
             return $conn;
         }
@@ -64,19 +64,26 @@
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
 
-            if(mysqli_query($conn,$sql)){
-                echo "Table Created";
+            if($conn->query($sql) === TRUE){
+                echo "Table Created<br>";
             }
             else{
                 echo "Error Creating Table: " . mysqli_error($conn);
             }
-            mysqli_close($conn);
+            $conn->close();
         }
 
-        function insertData(){
+        function insertData($name, $pass, $email){
             $conn = $this->dbConnect();
-            // $sql = "INSERT INTO users (userName, pass, email) VALUES 
+            $sql = "INSERT INTO customers (customer_name, pass, email) VALUES ('$name', '$pass', '$email')";
 
+            if($conn->query($sql) === TRUE){
+                echo "Insert Successful<br>";
+            }
+            else{
+                echo "Error During Insert " . mysqli_error($conn);
+            }
+            $conn->close();
         }
     }    
 

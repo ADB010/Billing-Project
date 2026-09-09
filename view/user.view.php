@@ -2,6 +2,7 @@
 <body>
     <div class="container">
         <div class="form">
+            <h1 class="heading">Signup</h1>
             <form name="user login" action="../controller/userRegistration.controller.php" method="post">
                 <label for="fname">Name:</label><br>
                 <input type="text" id="fname" name="fname"><br>
