@@ -7,7 +7,8 @@
     $db = "customerinfo";   
     $email = $_POST['email'];
     
-    $customer = new CustomerLoginDatabase("root", "", $db); // create a new object of the class
+    
+    $customer = new CustomerLoginDatabase("admin", "gg", $db); // create a new object of the class
     
     $customer = ($customer->userCheck($pass, $email) == 1) ? "Logged In" : "Wrong Credentials";
     echo $customer;

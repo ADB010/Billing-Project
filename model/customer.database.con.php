@@ -1,10 +1,10 @@
 <?php
     
     class DbConnection{
-        protected $servername = "localhost";
-        protected $username = "";
-        protected $password = "";
-        protected $dbname = "";
+        protected string $servername = "localhost";
+        protected string $username;
+        protected string $password;
+        protected string $dbname;
 
         function __construct($username, $password, $dbname){
             $this->username = $username; 
