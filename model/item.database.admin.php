@@ -73,12 +73,12 @@
             return;
         }
         
-        function insertItem($name, $price, $quantity){
+        function insertItem($name, $price, $quantity, $catagorie){
             $conn = $this->dbConnect();
-            $sql = "INSERT INTO items (item_name, price, quantity) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO items (item_name, price, quantity, catagorie) VALUES (?, ?, ?, ?)";
 
             if($stmt = $conn->prepare($sql)){
-                $stmt->bind_param('sss', $name, $price, $quantity);
+                $stmt->bind_param('ssss', $name, $price, $quantity, $catagorie);
                 $stmt->execute();
                 echo 'New Record Added Successfully';
             }

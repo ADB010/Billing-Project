@@ -4,7 +4,7 @@
     <div class="container">
         <div class="form">
             <h1>Item Selection</h1>
-            <form action="" method="post">
+            <form action="../controller/admin.controller.php" method="post">
                 <label for="item">Item:</label>
                 <input type="text" required><br><br>
                 <label for="quantity">Quantity:</label>
