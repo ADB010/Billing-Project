@@ -50,7 +50,8 @@
             return $conn;
         }
 
-        private function createItemTable(){
+        
+        function createItemTable(){
             $conn = $this->dbConnect();
 
             $sql = "CREATE TABLE IF NOT EXISTS items(
@@ -71,20 +72,46 @@
             $conn->close();
             return;
         }
-        private function insertItem(){
+        
+        function insertItem($name, $price, $quantity){
             $conn = $this->dbConnect();
             $sql = "INSERT INTO items (item_name, price, quantity) VALUES (?, ?, ?)";
 
-            if($conn->query($sql) === TRUE)    {
-                echo "Table Created<br>";
+            if($stmt = $conn->prepare($sql)){
+                $stmt->bind_param('sss', $name, $price, $quantity);
+                $stmt->execute();
+                echo 'New Record Added Successfully';
             }
             else{
-                echo "Error Inserting Data: " . $conn->error;
+                echo 'problem while inserting record';
             }
             $conn->close();
             return;
         }
-
-
-
+        function getItemData($name){
+            $conn = $this->dbConnect();
+            $sql = "SELECT * FROM items WHERE item_name = '$name'";
+            $result = $conn->query($sql);
+            if($result->num_rows > 0){
+                return $result;
+            }
+            else{
+                echo "No Data found";
+                
+            } 
+            $conn->close();
+            return;
+        }
+        function deleteItemData($name){
+            $conn = $this->dbConnect();
+            $sql = "DELETE FROM items WHERE item_name = '$name'";
+            if($conn->query($sql) === TRUE){
+                echo "Record deleted successfully<br>";
+            }
+            else{
+                echo "Error deleting record: " . $conn->error;
+            }
+            $conn->close();
+            return;
+        }
     }

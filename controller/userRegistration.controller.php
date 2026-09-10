@@ -7,7 +7,7 @@
     $db = "customerInfo";   
     $email = $_POST['email'];
 
-    $customer = new CustomerLoginDatabase("root", "", $db);
+    $customer = new CustomerLoginDatabase("admin", "gg", $db);
     if($customer->userCheck(0, $email) === 1){
         echo "User Already Exists";
         die();
