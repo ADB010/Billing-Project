@@ -3,7 +3,7 @@
     <div class="container">
         <div class="form">
             <h1 class="heading">login</h1>
-            <form name="user login" action="../controller/userLogin.controller.php" method="post">
+            <form name="User Login" action="../controller/userLogin.controller.php" method="post">
                 <label for="fname">Name:</label><br>
                 <input type="text" id="fname" name="fname"><br>
                 <lable for="email">Email:</lable><br>

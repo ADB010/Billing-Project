@@ -1,5 +1,5 @@
 <?php
-    require_once '../controller/userRegistration.controller.php';
+    
     class DbConnection{
         protected $servername = "localhost";
         protected $username = "";
