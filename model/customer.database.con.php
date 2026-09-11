@@ -116,6 +116,20 @@
             $conn->close();
             return;
         }
+        function getCustomerList(){
+            $conn = $this->dbConnect();
+            $sql = "SELECT customer_id, customer_name, email, reg_date FROM customers";
+            $result = $conn->query($sql);
+            if($result->num_rows > 0){
+                return $result;
+            }
+            else{
+                echo "No Data found";
+                
+            } 
+            $conn->close();
+            return;
+        }
     }   
 
    

@@ -1,4 +1,6 @@
-<?php require_once 'partials/header.view.php';?>
+<?php require_once 'partials/header.view.php';
+    require_once '../controller/customerList.controller.php';
+    $results = $customer->getCustomerList(); ?>
 
 <body>
     <div class="container">

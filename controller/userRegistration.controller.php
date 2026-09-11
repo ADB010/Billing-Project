@@ -7,13 +7,13 @@
     $db = "customerInfo";   
     $email = $_POST['email'];
 
-    $customer = new CustomerLoginDatabase("admin", "gg", $db);
+    $customer = new CustomerLoginDatabase("root", "", $db);
     if($customer->userCheck(0, $email) === 1){
         echo "User Already Exists";
         die();
     }
 
-    $newCon = new DbConnection("admin", "gg", $db);
+    $newCon = new DbConnection("root", "", $db);
     $newCon->dbCreate();
     $newCon->createTable();
     
