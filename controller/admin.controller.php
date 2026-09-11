@@ -5,8 +5,9 @@
     $quantity = $_POST['quantity'];
     $catagorie = $_POST['catagorie'];
 
-    $itemcon = new Items("admin", "gg", "ItemsDB");
+    $itemcon = new Items("root", "", "ItemsDB");
     $itemcon->dbCreate();
     $itemcon->createItemTable();
     $itemcon->insertItem($item_name, $price, $quantity, $catagorie);
+    // $itemcon->deleteItemData($item_name);
     echo "<br>Complete";

@@ -3,7 +3,7 @@
 <body>
     <div class="container">
         <div class="form">
-            <h1>Item Selection</h1>
+            <h1>Delete Item</h1>
             <form action="../controller/admin.controller.php" method="post">
                 <label for="item">Item:</label>
                 <input type="text" id="name" name="name" required><br><br>
@@ -17,12 +17,8 @@
                     <option value="Kitchen">Kitchen</option>
                 </select>
 
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" placeholder="IN 2 POINT DECIMAL" required><br><br>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" required><br><br>
-
-                <input type="submit" value="Submit">
+                <input type="submit" name="submit" value="REMOVE">
+                <a href="http://localhost:8080/Billing%20Project/view/itemList.view.php">View List</a>
             </form>
         </div>
     </div>

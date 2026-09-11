@@ -106,7 +106,7 @@
             $conn = $this->dbConnect();
             $sql = "DELETE FROM items WHERE item_name = '$name'";
             if($conn->query($sql) === TRUE){
-                echo "Record deleted successfully<br>";
+                echo "<br>Record deleted successfully<br>";
             }
             else{
                 echo "Error deleting record: " . $conn->error;

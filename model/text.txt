@@ -55,3 +55,9 @@
         $conn = dbConnect($name, $pass, $database);
         // $sql = "INSERT INTO users (userName, pass, email) VALUES 
     }
+    <!-- <?php foreach($result as $row ): ?>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            <?php endforeach; ?> -->

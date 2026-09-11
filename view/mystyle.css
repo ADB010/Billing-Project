@@ -22,7 +22,7 @@ body {
     box-sizing: border-box;
 }
 
-.form {
+.table, .form {
     width: min(100%, 420px);
     background: #ffffff;
     padding: 2rem;
