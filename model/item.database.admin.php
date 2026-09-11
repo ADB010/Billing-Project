@@ -2,15 +2,15 @@
 
     class Items{
         protected string $servername = "localhost";
-        protected string $username;
-        protected string $password;
-        protected string $dbname;
+        protected string $username = 'root';
+        protected string $password = '';
+        protected string $dbname = 'iteminfo';
 
-        function __construct($username, $password, $dbname){
-            $this->username = $username; 
-            $this->password = $password;
-            $this->dbname = $dbname;
-        }
+        // function __construct($username, $password, $dbname){
+        //     $this->username = $username; 
+        //     $this->password = $password;
+        //     $this->dbname = $dbname;
+        // }
 
         function dbCreate(){
 

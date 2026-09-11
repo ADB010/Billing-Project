@@ -4,7 +4,7 @@
     $catagorie = $_POST['catagorie'];
     $submit = $_POST['submit'];
 
-    $itemcon = new Items("root", "", "ItemsDB");
+    $itemcon = new Items();
 
     switch($submit){
         case 'ADD':

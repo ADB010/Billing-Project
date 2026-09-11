@@ -6,12 +6,12 @@
             <h1>Item Selection</h1>
             <form action="../controller/user.item.selection.php" method="post">
                 <label for="item">Item:</label>
-                <input type="text" required><br><br>
+                <input type="text" id="item" name="item" required><br><br>
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" required><br><br>
                 
-                <input type="submit" value="ADD MORE ITEMS">
-                <input type="submit" value="CHECKOUT">
+                <input type="submit" name="add" value="ADD MORE ITEMS">
+                <input type="submit" name="checkout" value="CHECKOUT">
             </form>
         </div>
     </div>
