@@ -23,6 +23,7 @@
                 <input type="number" id="quantity" name="quantity" required><br><br>
 
                 <input type="submit" name="submit" value="ADD">
+                <a href="http://localhost:8080/Billing%20Project/view/itemList.view.php">View List</a>
             </form>
         </div>
     </div>

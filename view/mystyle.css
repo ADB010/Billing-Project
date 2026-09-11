@@ -30,6 +30,38 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
+.table {
+    width: min(100%, 900px);
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.table th,
+.table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table th {
+    background: #eef2ff;
+    color: #1f2937;
+    font-weight: 700;
+}
+
+.table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.table tr:hover {
+    background: #eef6ff;
+}
+
 form {
     display: flex;
     flex-direction: column;

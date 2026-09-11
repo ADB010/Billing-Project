@@ -88,7 +88,7 @@
             $conn->close();
             return;
         }
-        function getItemData($name){
+        function searchItem($name){
             $conn = $this->dbConnect();
             $sql = "SELECT * FROM items WHERE item_name = '$name'";
             $result = $conn->query($sql);
@@ -114,4 +114,19 @@
             $conn->close();
             return;
         }
+        function gerItemData(){
+            $conn = $this->dbConnect();
+            $sql = "SELECT * FROM items";
+            $results = $conn->query($sql);
+            if($results->num_rows > 0){
+                return $results;
+            }
+            else{
+                echo "No Data found";
+                
+            } 
+            $conn->close();
+            return;
+        }
+
     }
