@@ -6,12 +6,15 @@
     $pass = $_POST['password'];
     $db = "customerinfo";   
     $email = $_POST['email'];
+
     
     
-    $customer = new CustomerLoginDatabase("admin", "gg", $db); // create a new object of the class
+    $customer = new CustomerLoginDatabase("root", "", $db); // create a new object of the class
     
     $customer = ($customer->userCheck($pass, $email) == 1) ? "Logged In" : "Wrong Credentials";
-    echo $customer;
+    
+    header("Location: ../view/itemList.view.php");
+
     // if($customer->userCheck($pass, $email) == 1){
     //     echo "Logged In";
     // }

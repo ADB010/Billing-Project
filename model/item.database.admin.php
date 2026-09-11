@@ -50,14 +50,15 @@
             return $conn;
         }
 
-        
         function createItemTable(){
             $conn = $this->dbConnect();
 
             $sql = "CREATE TABLE IF NOT EXISTS items(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             item_name VARCHAR(30) NOT NULL,
-            price DECIMAL(10,2) NOT NULL,
+            price DECIMAL(10, 2) NOT NULL,
+            discount_price DECIMAL(10, 2) NULL,
+            use_discount_price TINYINT(1) DEFAULT 0,
             quantity INT(10),            
             catagorie VARCHAR(30) DEFAULT 'Stock',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -88,6 +89,7 @@
             $conn->close();
             return;
         }
+
         function searchItem($name){
             $conn = $this->dbConnect();
             $sql = "SELECT * FROM items WHERE item_name = '$name'";
@@ -102,6 +104,7 @@
             $conn->close();
             return;
         }
+
         function deleteItemData($name){
             $conn = $this->dbConnect();
             $sql = "DELETE FROM items WHERE item_name = '$name'";
@@ -114,6 +117,7 @@
             $conn->close();
             return;
         }
+
         function gerItemData(){
             $conn = $this->dbConnect();
             $sql = "SELECT * FROM items";

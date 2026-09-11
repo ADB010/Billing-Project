@@ -27,6 +27,6 @@
     }
     
 
-    // header("Location: ../view/productInfo.view.php");
+    header("Location: ../view/login.view.php");
     
 

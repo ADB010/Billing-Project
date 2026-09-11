@@ -10,7 +10,7 @@
                 <input type="email" id="email" name="email"><br>
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password"><br>
-                <input type="submit" class="submit" value="submit"><br>
+                <input type="submit" class="submit" name="login" value="Login"><br>
                 <label for="txt">Already have an account?</label>
                 <a href="http://localhost:8080/Billing%20Project/view/signin.view.php">Signin</a>
             </form>

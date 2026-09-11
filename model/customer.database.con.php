@@ -12,10 +12,6 @@
             $this->dbname = $dbname;
         }
 
-        // function createUser(){
-
-        // }
-
         public function dbCreate(){
 
             $conn = new mysqli(
@@ -90,6 +86,7 @@
             $conn->close();
             return;
         }
+
         function getCustomerData($name){
             $conn = $this->dbConnect();
             $sql = "SELECT customer_id, customer_name, email, reg_date FROM customers WHERE customer_name = '$name'";
@@ -104,6 +101,7 @@
             $conn->close();
             return;
         }
+
         function deleteCustomerData($name){
             $conn = $this->dbConnect();
             $sql = "DELETE FROM customers WHERE customer_name = '$name'";
@@ -116,6 +114,7 @@
             $conn->close();
             return;
         }
+        
         function getCustomerList(){
             $conn = $this->dbConnect();
             $sql = "SELECT customer_id, customer_name, email, reg_date FROM customers";
