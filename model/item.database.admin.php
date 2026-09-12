@@ -112,9 +112,24 @@
             return;
         }
 
-        function gerItemData(){
+        function getItemData(){
             $conn = $this->dbConnect();
             $sql = "SELECT * FROM items";
+            $results = $conn->query($sql);
+            if($results->num_rows > 0){
+                return $results;
+            }
+            else{
+                echo "No Data found";
+                
+            } 
+            $conn->close();
+            return;
+        }
+
+        function getItemID($name){
+            $conn = $this->dbConnect();
+            $sql = "SELECT id FROM items WHERE item_name = '$name'";
             $results = $conn->query($sql);
             if($results->num_rows > 0){
                 return $results;

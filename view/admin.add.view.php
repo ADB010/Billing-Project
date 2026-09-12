@@ -3,7 +3,7 @@
 <body>
     <div class="container">
         <div class="form">
-            <h1>Item Selection</h1>
+            <h1>Add Product</h1>
             <form action="../controller/admin.controller.php" method="post">
                 <label for="item">Item:</label>
                 <input type="text" id="name" name="name" required><br><br>

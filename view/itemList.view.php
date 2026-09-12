@@ -1,6 +1,6 @@
 <?php require_once 'partials/header.view.php';
     require_once '../controller/itemList.controller.php';
-     $results = $itemcon->gerItemData();?>
+     $results = $itemcon->getItemData();?>
      
 <body>
     <div class="container">
@@ -31,6 +31,7 @@
             <?php endforeach; ?>
 
         </table>
+        <a href="http://localhost:8080/Billing%20Project/view/productSelect.view.php">Select Products</a>
 
         </div>
     </div>
