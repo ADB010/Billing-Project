@@ -18,7 +18,9 @@
                 </select>
 
                 <label for="price">Price:</label>
-                <input type="number" id="price" name="price" placeholder="IN 2 POINT DECIMAL" required><br><br>
+                <input type="text" id="price" name="price" placeholder="IN 2 POINT DECIMAL" required><br><br>
+                <label for="offer">Offer Price:</label>
+                <input type="text" id="offer" name="offer" placeholder="IN 2 POINT DECIMAL" required><br><br>
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" required><br><br>
 

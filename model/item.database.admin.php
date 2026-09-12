@@ -6,12 +6,6 @@
         protected string $password = '';
         protected string $dbname = 'iteminfo';
 
-        // function __construct($username, $password, $dbname){
-        //     $this->username = $username; 
-        //     $this->password = $password;
-        //     $this->dbname = $dbname;
-        // }
-
         function dbCreate(){
 
             $conn = new mysqli(
@@ -74,12 +68,12 @@
             return;
         }
         
-        function insertItem($name, $price, $quantity, $catagorie){
+        function insertItem($name, $price ,$offerPrice, $quantity, $catagorie){
             $conn = $this->dbConnect();
-            $sql = "INSERT INTO items (item_name, price, quantity, catagorie) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO items (item_name, price, discount_price, quantity, catagorie) VALUES (?, ?, ?, ?, ?)";
 
             if($stmt = $conn->prepare($sql)){
-                $stmt->bind_param('ssss', $name, $price, $quantity, $catagorie);
+                $stmt->bind_param('sddis', $name, $price, $offerPrice, $quantity, $catagorie);
                 $stmt->execute();
                 echo 'New Record Added Successfully';
             }
@@ -133,4 +127,64 @@
             return;
         }
 
+        // function updateOffer(String $name, Float $newOffer, Int $bool){
+        //     $conn = $this->dbConnect();
+        //     $sql = "UPDATE items SET discount_price = ?, use_discount_price = ? WHERE item_name = ?";
+
+        //     if($stmt = $conn->prepare($sql)){
+        //         $stmt->bind_param('dis', $newOffer, $bool, $name);
+        //         $stmt->execute();
+        //         echo 'New Record Added Successfully';
+        //     }
+        //     else{
+        //         echo 'problem while inserting record';
+        //     }
+        //     $conn->close();
+        //     return;
+        // }
+        function updateOffer(String $name, Int $bool, Float $newOffer = null){
+            $conn = $this->dbConnect();
+            if($newOffer !== null){
+                $sql = "UPDATE items SET discount_price = ?, use_discount_price = ? WHERE item_name = ?";
+
+                if($stmt = $conn->prepare($sql)){
+                    $stmt->bind_param('dis', $newOffer, $bool, $name);
+                    $stmt->execute();
+                    echo 'New Record Updated Successfully';
+                }
+                else{
+                    echo 'problem while inserting record';
+                }
+            }
+            else{
+                $sql = "UPDATE items SET use_discount_price = ? WHERE item_name = ?";
+
+                if($stmt = $conn->prepare($sql)){
+                    $stmt->bind_param('is', $newOffer, $bool, $name);
+                    $stmt->execute();
+                    echo 'New Record Updated Successfully';
+                }
+                else{
+                    echo 'problem while inserting record';
+                }
+            }  
+            $conn->close();
+            return;
+        }
+
+        function updateQuantity($newQuantity, $name){
+            $conn = $this->dbConnect();
+            $sql = "UPDATE items SET quantity = ? WHERE item_name = ?";
+
+            if($stmt = $conn->prepare($sql)){
+                $stmt->bind_param('is', $newQuantity, $name);
+                $stmt->execute();
+                echo 'New Record Added Successfully';
+            }
+            else{
+                echo 'Problem while inserting record';
+            }
+            $conn->close();
+            return;
+        }
     }

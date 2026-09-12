@@ -10,6 +10,8 @@
             <tr>
                 <th>Product Name</th>
                 <th>Price</th>
+                <th>Offer Price</th>
+                <th>Offer Status</th>
                 <th>Available Quantity</th>
                 <th>Catagorie</th>
             </tr>
@@ -17,6 +19,12 @@
                 <tr>
                     <td><?= $row['item_name'] ?></td>
                     <td><?= $row['price'] ?></td>
+                    <td><?= $row['discount_price'] ?></td>
+                    <?php if($row['use_discount_price'] == 0): ?>
+                        <td>Yes</td>
+                        <?php else: ?>
+                            <td>No</td>
+                    <?php endif; ?>
                     <td><?= $row['quantity'] ?></td>
                     <td><?= $row['catagorie'] ?></td>
                 </tr>
