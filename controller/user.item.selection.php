@@ -29,5 +29,5 @@
         header("Location: ../view/productSelect.view.php");
     }
     else{
-
+        header("Location: ../view/receipt.view.php");
     }
