@@ -3,6 +3,7 @@
      $results = $itemcon->getItemData();?>
      
 <body>
+    <?php require_once '../controller/router/user.navigation.php' ?>
     <div class="container">
         <div class="table">
 

@@ -1,6 +1,7 @@
 <?php require_once 'partials/header.view.php' ?>
 
 <body>
+    <?php require_once '../controller/router/admin.navigation.php' ?>
     <div class="container">
         <div class="form">
             <h1>Delete Item</h1>

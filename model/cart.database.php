@@ -1,49 +1,7 @@
 <?php
     require_once 'item.database.admin.php';
     class Cart extends Items{
-        // protected string $servername = 'localhost';
-        // protected string $username = 'root';
-        // protected string $password = '';
-        // protected string $dbname = 'cartDB';
-
-        // function dbConnect(){
-            
-        //     $conn = new mysqli(
-        //         $this->servername, 
-        //         $this->username, 
-        //         $this->password, 
-        //         $this->dbname);
-
-        //     if ($conn->connect_error) {
-        //         die("Connection failed: " . $conn->connect_error);
-        //     }
-        //     return $conn;
-        // }
-
-        // public function dbCreate(){
-
-        //     $conn = new mysqli(
-        //         $this->servername, 
-        //         $this->username, 
-        //         $this->password);
-
-        //     if($conn->connect_error){
-        //         die("Connection Failed: " . $conn->connect_error);
-        //     }
-        //     else{
-        //         echo "Connection Succesfull<br>";
-        //     }
-        //     $sql = "CREATE DATABASE IF NOT EXISTS $this->dbname";
-        //     if($conn->query($sql) === TRUE)    {
-        //         echo "Database Created<br>";
-        //     }
-        //     else{
-        //         echo "Error Creating Database: " . $conn->error;
-        //     }
-        //     $conn->close();
-        //     return;
-        // }
-
+        
         function createCart(){
             $conn = $this->dbConnect();
 

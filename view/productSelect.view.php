@@ -23,6 +23,7 @@ if (isset($_SESSION['alert'])):
 <?php endif; ?>
 
 <body>
+    <?php require_once '../controller/router/user.navigation.php' ?>
     <div class="container">
         <div class="form">
             <h1>Item Selection</h1>

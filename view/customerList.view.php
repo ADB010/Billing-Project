@@ -3,6 +3,7 @@
     $results = $customer->getCustomerList(); ?>
 
 <body>
+    <?php require_once '../controller/router/admin.navigation.php' ?>
     <div class="container">
         <div class="table">
 
