@@ -10,17 +10,21 @@
 
     $customer_name = $_SESSION['username'];
     $customer_id = $_SESSION['user_id'];
-    $results = $cart->fetchUserCart($customer_id);
+
+    $cartInfo = $cart->fetchUserCartWithDetails($customer_id);
+
+
+    // foreach($results as $key=>$value){
+    //     $itemData = $item->searchItem($value['product_id']);
+    //     if ($itemData) {
+    //         $cartInfo[] = $itemData;
+    //     }
+    // }
+    
     // echo "<pre>";
     // var_dump($cartInfo);
     // echo "<pre>";
 
-    // $cartInfo = array();
-    // foreach($results as $key=>$value){
-    //    $cartInfo = array
-    // }
-
-    // $item->getItemData();
     // die();
 
 

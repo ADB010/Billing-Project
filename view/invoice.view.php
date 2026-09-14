@@ -25,34 +25,22 @@
 
             <div class="invoice-table">
                 <div class="invoice-row invoice-head">
-                    <span>Sr.</span>
                     <span>Product</span>
-                    <span>Quantity</span>
                     <span>Price</span>
+                    <span>Quantity</span>
                     <span>Total</span>
                 </div>
-                <?php foreach($results as $key=>$value):?>
+                <?php foreach($cartInfo as $key=>$value):?>
                     <div class="invoice-row">
-                        <span><?= $value['id'] ?></span>
-                        <span><?= $value['product_id'] ?></span>
+                        <span><?= $value['item_name'] ?></span>
+                        <span>
+                            // Add an if condition to check if the discount is enabled then show appropriate price
+                            <?= $value['price'] ?>
+                        </span>
                         <span><?= $value['order_quantity'] ?></span>
-                        <span><?= 44 ?></span>
-                        <span><?= $value['order_quantity'] * 44 ?></span>
+                        <span><?= $value['order_quantity'] * $value['price'] ?></span>
                     </div>
                 <?php endforeach; ?>
-                <!-- <div class="invoice-row">
-                    <span>Product 2</span>
-                    <span>2</span>
-                    <span>$15.00</span>
-                    <span>$30.00</span>
-                </div>
-
-                <div class="invoice-row">
-                    <span>Product 3</span>
-                    <span>3</span>
-                    <span>$10.00</span>
-                    <span>$30.00</span>
-                </div> -->
             </div>
 
             <div class="invoice-summary">

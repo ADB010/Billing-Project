@@ -62,5 +62,18 @@
             return;
         }
 
+        public function fetchUserCartWithDetails($customer_id) {
+            $conn = $this->dbConnect();
+            $sql = "SELECT c.order_quantity, i.* 
+                    FROM cart c 
+                    JOIN items i ON c.product_id = i.id 
+                    WHERE c.customer_id = ?";
+                    
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $customer_id);
+            $stmt->execute();
+            
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        }
 
     }

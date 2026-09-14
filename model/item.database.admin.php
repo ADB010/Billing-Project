@@ -84,17 +84,18 @@
             return;
         }
 
-        function searchItem($name){
+        function searchItem($id){
             $conn = $this->dbConnect();
-            $sql = "SELECT * FROM items WHERE item_name = '$name'";
-            $result = $conn->query($sql);
-            if($result->num_rows > 0){
-                return $result;
+            $stmt = $conn->prepare("SELECT * FROM items WHERE id = ?");
+            $stmt->bind_param("i", $id); // "i" for integer, "s" for string
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                return $result->fetch_assoc(); // Return the row data directly
             }
-            else{
-                echo "No Data found";
-                
-            } 
+            
+            return null;
             $conn->close();
             return;
         }
