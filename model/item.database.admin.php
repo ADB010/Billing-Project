@@ -4,7 +4,7 @@
         protected string $servername = "localhost";
         protected string $username = 'root';
         protected string $password = '';
-        protected string $dbname = 'iteminfo';
+        protected string $dbname = 'Data';
 
         function dbCreate(){
 
@@ -142,21 +142,6 @@
             return;
         }
 
-        // function updateOffer(String $name, Float $newOffer, Int $bool){
-        //     $conn = $this->dbConnect();
-        //     $sql = "UPDATE items SET discount_price = ?, use_discount_price = ? WHERE item_name = ?";
-
-        //     if($stmt = $conn->prepare($sql)){
-        //         $stmt->bind_param('dis', $newOffer, $bool, $name);
-        //         $stmt->execute();
-        //         echo 'New Record Added Successfully';
-        //     }
-        //     else{
-        //         echo 'problem while inserting record';
-        //     }
-        //     $conn->close();
-        //     return;
-        // }
         function updateOffer(String $name, Int $bool, Float $newOffer = null){
             $conn = $this->dbConnect();
             if($newOffer !== null){
@@ -165,17 +150,18 @@
                 if($stmt = $conn->prepare($sql)){
                     $stmt->bind_param('dis', $newOffer, $bool, $name);
                     $stmt->execute();
-                    echo 'New Record Updated Successfully';
+                    echo 'Record Updated Successfully';
                 }
                 else{
                     echo 'problem while inserting record';
                 }
+                
             }
             else{
                 $sql = "UPDATE items SET use_discount_price = ? WHERE item_name = ?";
 
                 if($stmt = $conn->prepare($sql)){
-                    $stmt->bind_param('is', $newOffer, $bool, $name);
+                    $stmt->bind_param('is', $bool, $name);
                     $stmt->execute();
                     echo 'New Record Updated Successfully';
                 }

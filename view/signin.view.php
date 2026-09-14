@@ -1,4 +1,5 @@
-<?php include_once 'partials/header.view.php';?>
+<?php session_start(); unset($_SESSION['username']);
+ include_once 'partials/header.view.php';?>
 <body>
     <?php require_once '../controller/router/user.navigation.php' ?>
     <div class="container">

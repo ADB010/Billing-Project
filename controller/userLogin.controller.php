@@ -4,12 +4,12 @@
     
     $username = $_POST['fname'];
     $pass = $_POST['password'];
-    $db = "customerinfo";   
+    $db = "Data";   
     $email = $_POST['email'];
     $_SESSION['username'] = $username;
     
     $customer = new CustomerLoginDatabase("root", "", $db); // create a new object of the class
-    $message = ($customer->userCheck($pass, $email) == 1) ? "Logged In" : "Wrong Credentials";
+    $message = ($customer->userCheck($pass, $email, $username) == 1) ? "Logged In" : "Wrong Credentials";
     $result = $customer->getCustomerData($username);    
     $row = $result->fetch_assoc();
     $_SESSION['user_id'] = $row['customer_id'];

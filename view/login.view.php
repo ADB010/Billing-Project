@@ -1,6 +1,11 @@
-<?php include_once 'partials/header.view.php';?>
+<?php session_start(); include_once 'partials/header.view.php';?>
 <body>
-    <?php require_once '../controller/router/user.navigation.php' ?>
+    <?php 
+        if(isset($_SESSION['username']) && $_SESSION['username'] === 'admin' ){
+            require_once '../controller/router/admin.navigation.php';
+        }else{
+            require_once '../controller/router/user.navigation.php';
+        }?>      
     <div class="container">
         <div class="form">
             <h1 class="heading">login</h1>

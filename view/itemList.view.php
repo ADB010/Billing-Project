@@ -1,9 +1,16 @@
-<?php require_once 'partials/header.view.php';
+<?php
+    session_start();
+    require_once 'partials/header.view.php';
     require_once '../controller/itemList.controller.php';
      $results = $itemcon->getItemData();?>
      
 <body>
-    <?php require_once '../controller/router/user.navigation.php' ?>
+    <?php 
+        if(isset($_SESSION['username']) && $_SESSION['username'] === 'admin' ){
+            require_once '../controller/router/admin.navigation.php';
+        }else{
+            require_once '../controller/router/user.navigation.php';
+        }?>
     <div class="container">
         <div class="table">
 
@@ -22,9 +29,9 @@
                     <td><?= $row['price'] ?></td>
                     <td><?= $row['discount_price'] ?></td>
                     <?php if($row['use_discount_price'] == 0): ?>
-                        <td>Yes</td>
+                        <td>No</td>
                         <?php else: ?>
-                            <td>No</td>
+                            <td>Yes</td>
                     <?php endif; ?>
                     <td><?= $row['quantity'] ?></td>
                     <td><?= $row['catagorie'] ?></td>
@@ -32,7 +39,7 @@
             <?php endforeach; ?>
 
         </table>
-        <a href="http://localhost:8080/Billing%20Project/view/productSelect.view.php">Select Products</a>
+        <!-- <a href="http://localhost:8080/Billing%20Project/view/productSelect.view.php">Select Products</a> -->
 
         </div>
     </div>

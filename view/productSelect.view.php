@@ -1,7 +1,5 @@
 <?php require_once 'partials/header.view.php' ?>
-<?php
-session_start();
-//                                     AI
+<?php session_start();
 
 if (isset($_SESSION['alert'])): 
     $msg = htmlspecialchars($_SESSION['alert']['message'], ENT_QUOTES, 'UTF-8');
@@ -29,9 +27,9 @@ if (isset($_SESSION['alert'])):
             <h1>Item Selection</h1>
             <form action="../controller/user.item.selection.php" method="post">
                 <label for="item">Item:</label>
-                <input type="text" id="item" name="item" required><br><br>
+                <input type="text" id="item" name="item"><br><br>
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" required><br><br>              
+                <input type="number" id="quantity" name="quantity"><br><br>              
                 <input type="submit" name="submit" value="ADD MORE ITEMS">
                 <input type="submit" name="submit" value="CHECKOUT">
             </form>

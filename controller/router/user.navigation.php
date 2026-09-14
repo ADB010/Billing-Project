@@ -1,6 +1,12 @@
+<?php
+$currentPage = $currentPage ?? pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), PATHINFO_FILENAME);
+?>
 <nav>
-    <a href="http://localhost:8080/Billing%20Project/view/login.view.php">login</a>
-    <a href="http://localhost:8080/Billing%20Project/view/signin.view.php">signup</a>
-    <a href="http://localhost:8080/Billing%20Project/view/itemList.view.php">Product List</a>
-    <a href="http://localhost:8080/Billing%20Project/view/productSelect.view.php">Select Product</a>
+    <a class="<?= $currentPage === 'login.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/login.view.php">login</a>
+
+    <a class="<?= $currentPage === 'signin.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/signin.view.php">signup</a>
+
+    <a class="<?= $currentPage === 'itemList.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/itemList.view.php">Product List</a>
+
+    <a class="<?= $currentPage === 'productSelect.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/productSelect.view.php">Select Product</a>
 </nav>

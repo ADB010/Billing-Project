@@ -96,7 +96,9 @@
             }
             else{
                 echo "No Data found";
-                
+                echo "Go back";
+                $conn->close();
+                die();
             } 
             $conn->close();
             return;

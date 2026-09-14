@@ -13,7 +13,7 @@
             product_id INT(6) UNSIGNED NOT NULL,
             order_quantity INT NOT NULL,
             FOREIGN KEY (customer_id)
-                REFERENCES customerinfo.customers(customer_id),
+                REFERENCES Data.customers(customer_id),
             FOREIGN KEY (product_id)
                 REFERENCES items(id))";
 
@@ -43,7 +43,24 @@
             $conn->close();
             return;
         }
-
+        function fetchUserCart($id){
+            $conn = $this->dbConnect();
+            $sql = "SELECT * FROM cart WHERE customer_id = ?";
+            
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if($result->num_rows > 0){
+                return $result->fetch_all(MYSQLI_ASSOC);
+            }
+            else{
+                echo "No Data found";
+                
+            } 
+            $conn->close();
+            return;
+        }
 
 
     }

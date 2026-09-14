@@ -9,7 +9,7 @@
                 <label for="item">Item:</label>
                 <input type="text" id="name" name="name" required><br><br>
                 <label for="offer">Offer Price:</label>
-                <input type="text" id="offer" name="offer" placeholder="IN 2 POINT DECIMAL" required><br><br>
+                <input type="text" id="offer" name="offer" placeholder="IN 2 POINT DECIMAL"><br><br>
 
                 <div class="radio-group">
                     <label class="radio-option" for="enable">
