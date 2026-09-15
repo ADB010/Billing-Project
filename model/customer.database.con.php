@@ -56,7 +56,7 @@
             $sql = "CREATE TABLE IF NOT EXISTS customers(
             customer_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             customer_name VARCHAR(30) NOT NULL,
-            pass VARCHAR(30) NOT NULL,
+            pass VARCHAR(255) NOT NULL,
             email VARCHAR(50) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";

@@ -23,21 +23,21 @@
                 }
             }
             else{
-                $sql = "SELECT email, pass FROM customers WHERE customer_name = ?";
+                $sql = "SELECT pass, email FROM customers WHERE customer_name = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $user = $result->fetch_assoc();
                 if($this->checkAdmin($pass, $email)){
-                header("Location: ../view/admin.add.view.php");
+                    header("Location: ../view/admin.add.view.php");
+                    exit;
                 }
-                if (password_verify($pass, $user['password'])) {
-                    echo "Login successful";
+                if ($user && password_verify($pass, $user['pass']) && $email === $user['email']) {
+                    return true;
                 } else {
-                    echo "Invalid User";
+                    return false;
                 }
-                return;
             }       
             $stmt->close(); 
             $conn->close();
@@ -53,8 +53,6 @@
                 // Output data of each row
                 while($row = $result->fetch_assoc()) {
                     if(password_verify($pass, $row['pass']) & $email == $row['email']){
-                        echo 'error';
-                        die();
                         return true;
                     }
                     else{

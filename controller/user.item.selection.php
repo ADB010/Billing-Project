@@ -4,7 +4,7 @@
     require_once '../model/item.database.admin.php';
     require_once '../model/customer.database.con.php';
 
-    $option = $_POST['submit'];
+    $option = trim($_POST['submit']);
     $cart = new Cart();
     $cart->dbCreate();
     $cart->createCart();
@@ -12,12 +12,12 @@
     $item = new Items();
 
     if($option == 'ADD MORE ITEMS'){
-        $name = $_POST['item'];
-        $quantity = $_POST['quantity'];
-        $customer_id = $_SESSION['user_id'];
+        $name = trim($_POST['item']);
+        $quantity = trim($_POST['quantity']);
+        $customer_id = trim($_SESSION['user_id']);
         $result = $item->getItemID($name);
         $row = $result->fetch_assoc();
-        $product_id = $row['id'];
+        $product_id = trim($row['id']);
         $cart->addItem($customer_id, $product_id, $quantity);
 
         $_SESSION['alert'] = [

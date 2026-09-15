@@ -2,10 +2,10 @@
     require_once "../model/customer.database.con.php";
     require_once '../model/customer.login.database.php';
 
-    $username = $_POST['fname'];
-    $pass = $_POST['password'];
+    $username = trim($_POST['fname']);
+    $pass = trim($_POST['password']);
     $db = "Data";   
-    $email = $_POST['email'];
+    $email = trim($_POST['email']);
     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
     $customer = new CustomerLoginDatabase("root", "", $db);
@@ -15,19 +15,11 @@
         echo "User Already Exists";
         die();
     }
-
     $newCon = new DbConnection("root", "", $db);
     $newCon->dbCreate();
-    $newCon->createTable();
-    
+    $newCon->createTable();  
     
     $newCon->insertData($username, $hashedPassword, $email);
-    // $results = $newCon->getCustomerData($username);
-
-    // foreach($results as $row){
-    //     echo $row['customer_name'] . "<br>";
-        
-    // }
 
     header("Location: ../view/login.view.php");
     

@@ -2,7 +2,7 @@
     require_once '../model/item.database.admin.php';
     require_once '../model/customer.database.con.php';
 
-    $name = $_POST['name'];
+    $name = strtolower($_POST['name']);
     $submit = $_POST['submit'];
 
     $customercon = new DbConnection("root", "", "Data");
@@ -30,7 +30,7 @@
             if (isset($_POST['offer']) && trim($_POST['offer']) !== '') {
                 $newOffer = (float)$_POST['offer'];
                 $itemcon->updateOffer($name, $bool, $newOffer);
-                header("Location: ../view/productSelect.view.php");
+                header("Location: ../view/itemList.view.php");
             }
             else{
                 $itemcon->updateOffer($name, $bool);

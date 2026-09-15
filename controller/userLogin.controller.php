@@ -2,19 +2,26 @@
     session_start();
     require_once '../model/customer.login.database.php';
     
-    $username = $_POST['fname'];
-    $pass = $_POST['password'];
+    $username = trim($_POST['fname']);
+    $pass = trim($_POST['password']);
     $db = "Data";   
-    $email = $_POST['email'];
-    $_SESSION['username'] = $username;
-    
-    $customer = new CustomerLoginDatabase("root", "", $db); // create a new object of the class
-    $message = ($customer->userCheck($pass, $email, $username) == 1) ? "Logged In" : "Wrong Credentials";
-    $result = $customer->getCustomerData($username);    
-    $row = $result->fetch_assoc();
-    $_SESSION['user_id'] = $row['customer_id'];
+    $email = trim($_POST['email']);
 
-    header("Location: ../view/itemList.view.php");
+    $customer = new CustomerLoginDatabase("root", "", $db); // create a new object of the class
+    $message = ($customer->userCheck($pass, $email, $username) === true) ? "Logged In" : "Wrong Credentials";
+    if($message === "Logged In"){
+        $result = $customer->getCustomerData($username);    
+        $row = $result->fetch_assoc();
+        $_SESSION['username'] = $row['customer_name'];
+        $_SESSION['user_id'] = $row['customer_id'];
+
+        header("Location: ../view/itemList.view.php");
+    }
+    else{
+        echo $message;
+        die();
+    }
+    
 
     // if($customer->userCheck($pass, $email) == 1){
     //     echo "Logged In";

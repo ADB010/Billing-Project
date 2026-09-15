@@ -16,10 +16,10 @@
             </tr>
             <?php foreach($results as $row ): ?>
                 <tr>
-                    <td><?= $row['customer_id'] ?></td>
-                    <td><?= $row['customer_name'] ?></td>
-                    <td><?= $row['email'] ?></td>
-                    <td><?= $row['reg_date'] ?></td>
+                    <td><?= htmlspecialchars($row['customer_id']) ?></td>
+                    <td><?= htmlspecialchars($row['customer_name']) ?></td>
+                    <td><?= htmlspecialchars($row['email']) ?></td>
+                    <td><?= htmlspecialchars($row['reg_date']) ?></td>
                 </tr>
             <?php endforeach; ?>
 
