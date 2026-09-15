@@ -23,6 +23,8 @@
 
     foreach($cartInfo as $key=>$value){
         $subtotal += $value['price'];
+        $newQuantity = $value['quantity'] - $value['order_quantity'];
+        $item->updateQuantity($newQuantity, $value['item_name']);
         if($value['use_discount_price'] === 1){
             $discount += $value['order_quantity'] * ($value['price'] - $value['discount_price']);
         }

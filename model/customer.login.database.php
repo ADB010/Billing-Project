@@ -23,12 +23,16 @@
                 }
             }
             else{
-                $sql = "SELECT pass, email FROM customers WHERE customer_name = ?";
+                $sql = "SELECT customer_id, pass, email FROM customers WHERE customer_name = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $user = $result->fetch_assoc();
+                // var_dump($user);die();
+                if($user==null){echo "User not Found"; die();}
+                $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $user['customer_id'];
                 if($this->checkAdmin($pass, $email)){
                     header("Location: ../view/admin.add.view.php");
                     exit;

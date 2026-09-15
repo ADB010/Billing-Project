@@ -1,6 +1,7 @@
 <?php 
     require_once '../model/item.database.admin.php';
     require_once '../model/customer.database.con.php';
+    session_start();
 
     $name = strtolower($_POST['name']);
     $submit = $_POST['submit'];
@@ -16,9 +17,15 @@
             $offerPrice = (float)$_POST['offer'];
             $quantity = $_POST['quantity'];
             $catagorie = $_POST['catagorie'];
-            $itemcon->insertItem($name, $price, $offerPrice, $quantity, $catagorie); 
-            header("Location: ../view/productSelect.view.php");           
-            break;
+            if($itemcon->getItemID($name) === false){
+                $itemcon->insertItem($name, $price, $offerPrice, $quantity, $catagorie); 
+                header("Location: ../view/itemList.view.php");           
+                break;
+            }else{
+                echo 'Item already exist';
+                die();
+            }
+            
 
         case 'REMOVE':
             $itemcon->deleteItemData($name);

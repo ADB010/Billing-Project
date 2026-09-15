@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require_once 'partials/header.view.php';
     require_once '../controller/itemList.controller.php';
+    require_once 'partials/header.view.php';
     ?>
      
 <body>

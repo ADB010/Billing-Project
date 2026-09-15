@@ -3,7 +3,7 @@
     <?php 
         if(isset($_SESSION['username']) && $_SESSION['username'] === 'admin' ){
             require_once '../controller/router/admin.navigation.php';
-        }else{
+        } else{
             require_once '../controller/router/user.navigation.php';
         }?>      
     <div class="container">

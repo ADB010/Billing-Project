@@ -35,7 +35,7 @@
             if($stmt = $conn->prepare($sql)){
                 $stmt->bind_param('iii', $customer_id, $product_id, $quantity);
                 $stmt->execute();
-                echo 'New Record Added Successfully';
+                echo '';
             }
             else{
                 echo 'problem while inserting record';

@@ -17,11 +17,11 @@
                 die("Connection Failed: " . $conn->connect_error);
             }
             else{
-                echo "Connection Succesfull<br>";
+                echo "";
             }
             $sql = "CREATE DATABASE IF NOT EXISTS $this->dbname";
             if($conn->query($sql) === TRUE)    {
-                echo "Database Created<br>";
+                echo "";
             }
             else{
                 echo "Error Creating Database: " . $conn->error;
@@ -59,7 +59,7 @@
             )";
 
             if($conn->query($sql) === TRUE)    {
-                echo "Table Created<br>";
+                echo "";
             }
             else{
                 echo "Error Creating Table: " . $conn->error;
@@ -75,7 +75,7 @@
             if($stmt = $conn->prepare($sql)){
                 $stmt->bind_param('sddis', $name, $price, $offerPrice, $quantity, $catagorie);
                 $stmt->execute();
-                echo 'New Record Added Successfully';
+                echo '';
             }
             else{
                 echo 'problem while inserting record';
@@ -137,10 +137,9 @@
             }
             else{
                 echo "No Data found";
-                
             } 
             $conn->close();
-            return;
+            return false;
         }
 
         function updateOffer(String $name, Int $bool, Float $newOffer = null){
@@ -181,7 +180,7 @@
             if($stmt = $conn->prepare($sql)){
                 $stmt->bind_param('is', $newQuantity, $name);
                 $stmt->execute();
-                echo 'New Record Added Successfully';
+                echo '';
             }
             else{
                 echo 'Problem while inserting record';
