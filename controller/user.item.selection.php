@@ -18,7 +18,7 @@
         $result = $item->getItemID($name);
         $row = $result->fetch_assoc();
         $product_id = trim($row['id']);
-        $cart->addItem($customer_id, $product_id, $quantity);
+        $cart->addItem($customer_id, $product_id, $quantity); 
 
         $_SESSION['alert'] = [
             'type' => 'success',

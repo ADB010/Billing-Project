@@ -3,17 +3,16 @@ try {
     session_start();
     require_once '../model/customer.login.database.php';
     
-    // print_r($_SESSION);die();
     // $username = trim($_POST['fname']);
     $pass = trim($_POST['password']);
     $db = "Data";   
     $email = trim($_POST['email']);
     
     $customer = new CustomerLoginDatabase("root", "", $db); // create a new object of the class
-    $message = ($customer->userCheck($pass, $email, $username) === true) ? "Logged In" : "Wrong Credentials";
+    $message = ($customer->userCheck($pass, $email) === true) ? "Logged In" : "Wrong Credentials";
     if($message === "Logged In"){
-        $result = $customer->getCustomerData($username);    
-        $row = $result->fetch_assoc();
+        // $result = $customer->getCustomerData($username);    
+        // $row = $result->fetch_assoc();
     
         header("Location: ../view/itemList.view.php");
     }

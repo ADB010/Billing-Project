@@ -2,7 +2,6 @@
 $currentPage = $currentPage ?? pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), PATHINFO_FILENAME);
 ?>
 <nav>
-    <a class="<?= $currentPage === 'login.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/login.view.php">login</a>
 
     <a class="<?= $currentPage === 'itemList.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/itemList.view.php">Product List</a>
 
@@ -15,4 +14,11 @@ $currentPage = $currentPage ?? pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_U
     <a class="<?= $currentPage === 'customerList.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/customerList.view.php">Customer List</a>
 
     <a class="<?= $currentPage === 'admin.customer.delete' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/admin.customer.delete.php">Remove Customer</a>
+
+    <?php if(isset($_SESSION['username'])): ?>
+    <form action="../controller/logout.controller.php" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+    <?php endif ?>
+
 </nav>

@@ -3,15 +3,17 @@
     <?php 
         if(isset($_SESSION['username']) && $_SESSION['username'] === 'admin' ){
             require_once '../controller/router/admin.navigation.php';
-        } else{
-            require_once '../controller/router/user.navigation.php';
+        // } elseif(!isset($_SESSION['username'])){
+        //     require_once '../controller/router/user.navigation.php';
+        }else{
+            echo "";
         }?>      
     <div class="container">
         <div class="form">
             <h1 class="heading">login</h1>
             <form name="User Login" action="../controller/userLogin.controller.php" method="post">
-                <label for="fname">Name:</label><br>
-                <input type="text" id="fname" name="fname"><br>
+                <!-- <label for="fname">Name:</label><br>
+                <input type="text" id="fname" name="fname"><br> -->
                 <lable for="email">Email:</lable><br>
                 <input type="email" id="email" name="email"><br>
                 <label for="password">Password:</label><br>

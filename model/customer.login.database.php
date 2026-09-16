@@ -5,7 +5,7 @@
     class CustomerLoginDatabase extends DbConnection{
 
 
-        function userCheck($pass, $email, $username){
+        function userCheck($pass, $email){
             $conn = $this->dbconnect();
             
             if($pass == 0){
@@ -23,15 +23,14 @@
                 }
             }
             else{
-                $sql = "SELECT customer_id, pass, email FROM customers WHERE customer_name = ?";
+                $sql = "SELECT customer_name, customer_id, pass, email FROM customers WHERE email = ?";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("s", $username);
+                $stmt->bind_param("s", $email);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $user = $result->fetch_assoc();
-                // var_dump($user);die();
                 if($user==null){echo "User not Found"; die();}
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $user['customer_name'];
                 $_SESSION['user_id'] = $user['customer_id'];
                 if($this->checkAdmin($pass, $email)){
                     header("Location: ../view/admin.add.view.php");

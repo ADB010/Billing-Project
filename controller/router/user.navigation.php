@@ -7,4 +7,10 @@ $currentPage = $currentPage ?? pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_U
     <a class="<?= $currentPage === 'itemList.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/itemList.view.php">Product List</a>
 
     <a class="<?= $currentPage === 'productSelect.view' ? 'active' : '' ?>" href="http://localhost:8080/Billing%20Project/view/productSelect.view.php">Select Product</a>
+
+    <?php if(isset($_SESSION['username'])): ?>
+    <form action="../controller/logout.controller.php" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+    <?php endif ?>
 </nav>
